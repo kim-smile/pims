@@ -17,13 +17,17 @@ AI 서비스 계층은 geminiService.ts를 중심으로 Google Gemini 2.5 Flash 
 전체 흐름은 사용자 입력 → Gemini API 분석 → 구조화된 데이터 반환 → App.tsx에서 ID 부여·중복 검사 → React State 업데이트 → LocalStorage 저장 → 컴포넌트 리렌더링 순서로 진행된다.
 
 사용자는 하나의 채팅 인터페이스에서 모든 정보를 입력하고, 8개의 뷰를 전환하며 일정·지출·연락처·메모를 통합적으로 조회·편집할 수 있다.
+
 <img width="1600" height="847" alt="image" src="https://github.com/user-attachments/assets/882be513-03d9-450e-a2cc-7d8a24bf9c88" />
 <img width="1600" height="459" alt="image" src="https://github.com/user-attachments/assets/457fad49-6dcd-4416-9157-1a6a26a72d0f" />
 
 ### 📊 Result
 Vite 기반 프로토타입에서는 채팅, 캘린더, 가계부, 연락처, 메모장 기능이 서로 유기적으로 연결되어 작동함을 확인하였다. 비용 기록 기능에서는 텍스트와 이미지를 함께 활용하고, OCR을 활용한 자동 정보 추출이 안정적으로 수행됨을 검증하였다.
+
 <img width="1067" height="918" alt="image" src="https://github.com/user-attachments/assets/6a86e7b5-3bfe-48d0-921f-330fbcc82a1b" />
+
 20명을 대상으로 진행한 사용자 테스트 결과, 한 화면에서 여러 정보를 즉시 확인할 수 있다는 점이 긍정적으로 평가되었다. 이 과정에서 검색 기능 강화, 알림 설정, 모바일 UI 개선 등 추가적인 개선 필요성이 도출되었다.
+
 <img width="1065" height="474" alt="image" src="https://github.com/user-attachments/assets/106bd1f6-9406-4e2a-b158-e70912fd4348" />
 
 ### 🧾 Conclusions
