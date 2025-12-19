@@ -2,6 +2,7 @@
 
 ## 📁 프로그램 전체
 components/
+
  React UI 컴포넌트들이 모여있는 폴더입니다.
  - CalendarView.tsx - 일정 달력 뷰
  - ChatInterface.tsx - AI 챗봇 인터페이스
@@ -15,18 +16,21 @@ components/
  - 각종 Modal 컴포넌트들 (ConfirmationModal, ConflictModal, ScheduleDetailModal 등)
    
 services/
+
  AI 서비스 로직을 담당하는 폴더입니다.
  - geminiService.ts - Google Gemini API 연동 서비스
  - hybridService.ts - 하이브리드 AI 서비스 (로컬 모델 + Gemini 결합)
  - localModelService.ts - 로컬 AI 모델 서비스
 
 lora_finetuned/
+
  LoRA(Low-Rank Adaptation) 파인튜닝된 모델 파일들입니다.
  - adapter_model.bin - 파인튜닝된 어댑터 모델
  - adapter_config.json - 어댑터 설정
  - Tokenizer 관련 파일들 (vocab.json, merges.txt 등)
    
 node_modules/
+
  npm 패키지 의존성 폴더입니다.
 
 프론트엔드 핵심 파일
@@ -168,7 +172,7 @@ special_tokens_map.json (137 bytes)
 이 폴더를 model_path로 지정하면 학습된 LoRA 모델을 불러올 수 있습니다. 베이스 모델과 adapter_model.bin을 결합하여 파인튜닝된 모델이 됩니다.
 
 ## 📁 services
-1. geminiService.ts - Gemini API 서비스
+geminiService.ts - Gemini API 서비스
  - 역할: Google Gemini 2.5 Flash 모델을 사용한 메인 AI 처리
  - 주요 기능:
   - 사용자 입력(텍스트/이미지)을 분석하여 데이터 추출
@@ -179,7 +183,7 @@ special_tokens_map.json (137 bytes)
   - 복잡한 질문 처리
  - 위치: geminiService.ts:291-420의 processChat() 함수가 메인 진입점
 
-2. localModelService.ts - 로컬 LoRA 모델 서비스
+localModelService.ts - 로컬 LoRA 모델 서비스
  - 역할: 로컬에서 실행되는 GPT-2 + LoRA Fine-tuned 모델과 통신
  - 주요 기능:
   - http://localhost:8000의 로컬 서버 헬스 체크
@@ -188,7 +192,7 @@ special_tokens_map.json (137 bytes)
   - 비용 절감 및 빠른 응답 속도
  - 위치: localModelService.ts:44-111의 processWithLocalModel() 함수
 
-3. hybridService.ts - 하이브리드 서비스 (메인 진입점)
+hybridService.ts - 하이브리드 서비스 (메인 진입점)
  - 역할: 로컬 모델과 Gemini API를 지능적으로 조합
  - 처리 우선순위:
   a. 이미지가 있으면 → 무조건 Gemini 사용 (OCR 필요)
@@ -201,10 +205,15 @@ special_tokens_map.json (137 bytes)
 
 아키텍처 흐름
 사용자 입력 → hybridService.processChat()
+
                 ├─ 이미지 있음? → geminiService
+                
                 ├─ 로컬 서버 활성화? → localModelService
+                
                 │   └─ 처리 가능? → ✓ 완료
+                
                 │       └─ 처리 불가? → geminiService (폴백)
+                
                 └─ 로컬 서버 비활성화? → geminiService
                 
 실제로는 hybridService.ts의 processChat()을 호출하면 모든 것이 자동으로 처리됩니다.
