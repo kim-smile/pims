@@ -39,4 +39,5 @@ LifeONE은 분산된 개인 정보를 통합 관리하는 채팅 기반 PIMS를 
 
 ## Files
 LifeONE 프로젝트의 전체 파일 구조와 각 파일의 역할에 대한 상세 설명은 다음 문서에 정리되어 있다.
+
 👉 [📁 File Structure](./FILE_STRUCTURE.md)
