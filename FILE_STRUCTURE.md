@@ -200,22 +200,24 @@ hybridService.ts - 하이브리드 서비스 (메인 진입점)
  - 위치: hybridService.ts:55-229의 processChat() 함수
 
 아키텍처 흐름
-'''
+```
 사용자 입력 → hybridService.processChat()
                 ├─ 이미지 있음? → geminiService
                 ├─ 로컬 서버 활성화? → localModelService
                 │   └─ 처리 가능? → ✓ 완료
                 │       └─ 처리 불가? → geminiService (폴백)
                 └─ 로컬 서버 비활성화? → geminiService
-'''
+```
                 
 실제로는 hybridService.ts의 processChat()을 호출하면 모든 것이 자동으로 처리됩니다.
 
 ## 📁 node_modules
+```
 특수 파일/폴더
  .bin/ - npm 패키지들이 제공하는 실행 가능한 명령어들이 저장됨 (예: vite, tsc 등)
  .package-lock.json - 설치된 모든 패키지의 정확한 버전 정보를 기록한 잠금 파일
  .vite/, .vite-temp/ - Vite 빌드 도구의 캐시 및 임시 파일
+```
 
 @ 스코프 패키지 (조직/네임스페이스별 그룹화)
  - @babel/ - JavaScript 트랜스파일러 관련 패키지
