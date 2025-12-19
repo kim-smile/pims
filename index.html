@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI 개인 정보 관리</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0"
+  }
+}
+</script>
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+  .sidebar-transition {
+    transition: transform 1s ease-in-out;
+  }
+  .sidebar-closed {
+    transform: translateX(-100%);
+  }
+  .sidebar-open {
+    transform: translateX(0);
+  }
+
+  /* Checklist styles for Diary Editor */
+  .editor-content ul.checklist-ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  .editor-content ul.checklist-ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .editor-content ul.checklist-ul li::before {
+    content: '';
+    position: absolute;
+    left: 0.25rem;
+    top: 0.35rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    border: 1.5px solid #9ca3af; /* gray-400 */
+    border-radius: 2px;
+    background-color: transparent;
+  }
+</style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-gray-100 text-gray-800">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

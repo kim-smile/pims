@@ -1,0 +1,7 @@
+{
+  "name": "핌즈 AI 개인 정보 관리 시스템 3",
+  "description": "자유 형식의 멀티모달 AI 기반 개인 정보 관리 시스템(PIMS)입니다. 텍스트, 음성 메모, 사진을 입력하면 AI가 자동으로 연락처, 지출, 일기, 일정으로 분류하고 저장합니다.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
